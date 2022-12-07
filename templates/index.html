@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %} Detalle {% endblock  %}
+
+{% block content %}
+    <div class="container-div">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Dias Trabajados</th>
+                <th scope="col">Mes Pagado</th>
+                <th scope="col">Total Salario</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+            {% for tr in trabajadores %}
+              <tr>
+                <th scope="row">{{tr.id}}</th>
+                <th scope="col">{{tr.Nombre}}</th>
+                <th scope="col">{{tr.Cargo}}</th>
+                <th scope="col">{{tr.Dias_Trabajados}}</th>
+                <th scope="col">{{tr.Mes_Pagado}}</th>
+                <th scope="col">{{tr.Total_Salario}}</th>
+                <th scope="col"><a href="{% url 'actualizar' id=tr.id %}" class="btn btn-secondary">Actualizar perfil</a></th>
+                <th scope="col"><button onclick = "borrar('{{tr.id}}')" class="btn btn-danger">Eliminar</button></th>
+              </tr>
+            {% endfor %}
+            </tbody>
+          </table>
+    </div>
+{% endblock  %}
